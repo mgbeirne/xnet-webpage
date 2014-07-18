@@ -1,0 +1,54 @@
+/*
+CSS for Mike Beirne's personal site.
+*/
+
+body {
+     font-family: Verdana, Helvetica, Arial, sans-serif;
+     background-color: #00A3A3;
+     background-image: url(teal_paper.gif);
+     line-height: 125%;
+     padding: 15px;
+     border: 4px solid navy;
+}
+
+#navigation {
+    background-color: #7da5d8;
+    color: navy;
+    font-weight: bold;
+    width: 580px;
+    height: 220px;
+}
+
+h1 {
+    font-size: x-large;
+    color: white;
+    padding-top: .2em;
+    padding-bottom: .2em;
+    padding-left: .4em;
+}
+
+.feature {
+    float: right;
+    margin: 10px;
+}
+
+li {
+   font-size: small;
+   list-style-type: circle;
+}
+
+.picture {
+font-size: 65%;
+font-weight: bold;
+margin-top: 0;
+line-height: 1.4em;
+}
+
+.picture img {
+border: 15px solid white;
+}
+
+a:link {color:#121231;text-decoration:none;}
+a:visited {color:#0000FF;text-decoration:none;}
+a:hover {color:#FF00FF;text-decoration:underline;}
+a:active {color:#00FF00;text-decoration:underline;}
