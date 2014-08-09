@@ -9,23 +9,49 @@
  <link href="style.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
+<div id="header">
+<h1>Mike Beirne and LAComputerHelp.com</h1>
+</div>
+<div id="menuTop"> <ul id="menuOne" class="menuHoriz">
+  <li><a href="" onMouseOver="setMenu('menuSubOne')" onMouseOut="clearMenu('menuSubOne')">Home</a></li>
+  <li><a href="" onMouseOver="setMenu('menuSubTwo')" onMouseOut="clearMenu('menuSubTwo')">Tutorials</a></li>
+  <li><a href="" onMouseOver="setMenu('menuSubThree')" onMouseOut="clearMenu('menuSubThree')">Stories</a></li>
+  <li><a href="" onMouseOver="setMenu('menuSubFour')" onMouseOut="clearMenu('menuSubFour')">Links</a></li>
+  <li><a href="" onMouseOver="setMenu('menuSubFive')" onMouseOut="clearMenu('menuSubFive')">Pictures</a></li>
+  </ul>
+
+  <ul id="menuSubOne" class="menuVert" onMouseOver="setMenu('menuSubOne')" onMouseOut="clearMenu('menuSubOne')">
+    <li><a href="index.html">Mike Beirne</a></li>
+  </ul>
+
+  <ul id="menuSubTwo" class="menuVert" onMouseOver="setMenu('menuSubTwo')" onMouseOut="clearMenu('menuSubTwo')">
+    <li><a href="trixbox/index.html">VoIP and TZ170</a></li>
+    <li><a href="IpcopIpsecTutorial/IPCop_IPSec_VPN_tutorial.html">IPCop IPSec VPN</a></li> 
+    <li><a href="ipcopipsec/ipcopipsecvpn.htm">IPCop VPN to XP</a></li>
+  </ul>
+
+  <ul id="menuSubThree" class="menuVert" onMouseOver="setMenu('menuSubThree')" onMouseOut="clearMenu('menuSubThree')">
+    <li><a href="wakeupsurvey.html">Wake-up alarm</a></li>
+    <li><a href="Fonality_bell_ring.html">Fonality Bell prank</a></li>
+  </ul>
+
+  <ul id="menuSubFour" class="menuVert" onMouseOver="setMenu('menuSubFour')" onMouseOut="clearMenu('menuSubFour')">
+  <li><a href="http://www.imagescape.com">Ken's company</a></li>
+  <li><a href="http://www.lawnpartysigns.com/">Lawn Party Signs</a></li>
+ </ul>
+  <ul id="menuSubFive" class="menuVert" onMouseOver="setMenu('menuSubFive')" onMouseOut="clearMenu('menuSubFive')">
+  <li><a href="peacocks/">Peacocks</a></li>
+ </ul>
+</div><!--menuTop -->
 <div id="greenbackground">
 <div>
 <img src="BeirneSide100115-4.jpg" class="feature" width="308" height="544" alt="a picture of me"/>
-<h1>Mike Beirne and LAComputerHelp.com</h1>
 </div>
 <div id="bodycontent">
 Hello,
 <p>
 I used to do UNIX system administration in the Chicago area, but have moved to Santa Clara, California by way of Los Angeles. I like to read Science Fiction, but most of my books are in storage near Chicago. I may get them shipped out here someday.</p>
-<p>
-I recently didn't pay for my Zutronic(Go Daddy reseller) website,
-named "LAComputerHelp.com".  Mainly because I got almost no work out of it
-and ended up taking a full-time job near San Francisco.
-I lost part of the IPCop IPSec VPN tutorial as I had only backed up the
-first part and not the Sonicwall TZ170 and pfSense additions.
-</p>
-<p>
+<p id="news">
 The <a href="http://www.clout.chi.il.us">"Clout Project"</a> was set up
 to allow people who did not work for a large company or were not a student
 at an Internet connected university to have access to Internet email.
@@ -33,8 +59,7 @@ I am one of the registrars of the chi.il.us domain that was set up to
 support it.
 Since anyone can now get a free Hotmail, Gmail or Yahoo account and
 access it from almost any library, the
-<a href="http://www.clout.chi.il.us">Clout Project</a> is pretty much
-defunct at this time.
+Clout Project is pretty much just a DNS registry now.
 Although Jon Postel forbade us from charging any money when we were first
 delegated the chi.il.us domain, Neustar, the current owner of the .us
 registry is definitely trying to make money off of it.
@@ -49,20 +74,9 @@ Netflix and Redbox have forced Blockbuster into bankruptcy.
 Blockbuster's long slow lines and late fees are a thing of the past for me.
 </p>
 </div> <!-- end of bodycontent div -->
-<p><img src="rule18.gif" alt="an animated gif separator"  /></p>
-<div id="navigation">
- <ul>
-  <li><a href="http://www.imagescape.com">My former Office Mate's company</a></li>
-  <li><a href="trixbox/index.html">How to configure a Sonicwall TZ170 firewall for Fonality or trixbox VoIP.</a></li>
-  <li><a href="IpcopIpsecTutorial/IPCop_IPSec_VPN_tutorial.html">How to configure an IPCop firewall to set up an IPSec VPN using certificates.</a></li> 
-  <li><a href="ipcopipsec/ipcopipsecvpn.htm">Wink flash video on how to configure an IPCop firewall IPSec VPN to a Shrewsoft VPN client on Windows using certificates.</a></li>
-  <li><a href="peacocks/">A few images of peacocks near my former boss's office.</a></li>
-  <li><a href="http://www.lawnpartysigns.com/">A friend's West Knoxville Lawn Party Sign business.</a></li>
-  <li><a href="Fonality_bell_ring.html">A write-up of a prank that I pulled on my boss at Fonality.</a></li>
-  <li><a href="wakeupsurvey.html">A survey of wake up alarms.</a></li>
- </ul>
-</div> <!-- end of navigation div -->
-<p><img src="rule18.gif"  alt="an animated gif separator"  /></p>
+<p id="no-script">
+We recommend that you have JavaScript enabled!
+</p>
 <address>
 Mike Beirne  &lt;beirne AT xnet DOT com&gt;
 </address>
@@ -73,5 +87,7 @@ Mike Beirne  &lt;beirne AT xnet DOT com&gt;
 <h5>Copyright &#169; 1995, 1997, 1998, 2000-2011 by Mike Beirne</h5>
 </div>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="script.js"></script>
 </body>
 </html>
