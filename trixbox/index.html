@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Fonality or trixbox Sonicwall setup page</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<link href="../style.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="header">
+<h1>Mike Beirne and LAComputerHelp.com</h1>
+</div>
+<div id="menuTop"> <ul id="menuOne" class="menuHoriz">
+  <li><a href="" onMouseOver="setMenu('menuSubOne')" onMouseOut="clearMenu('menuSubOne')">Home</a></li>
+  <li><a href="" onMouseOver="setMenu('menuSubTwo')" onMouseOut="clearMenu('menuSubTwo')">Tutorials</a></li>
+  <li><a href="" onMouseOver="setMenu('menuSubThree')" onMouseOut="clearMenu('menuSubThree')">Stories</a></li>
+  <li><a href="" onMouseOver="setMenu('menuSubFour')" onMouseOut="clearMenu('menuSubFour')">Links</a></li>
+  <li><a href="" onMouseOver="setMenu('menuSubFive')" onMouseOut="clearMenu('menuSubFive')">Pictures</a></li>
+  </ul>
+
+  <ul id="menuSubOne" class="menuVert" onMouseOver="setMenu('menuSubOne')" onMouseOut="clearMenu('menuSubOne')">
+    <li><a href="../index.html">Mike Beirne</a></li>
+  </ul>
+
+  <ul id="menuSubTwo" class="menuVert" onMouseOver="setMenu('menuSubTwo')" onMouseOut="clearMenu('menuSubTwo')">
+    <li><a href="index.html">VoIP and TZ170</a></li>
+    <li><a href="../IpcopIpsecTutorial/IPCop_IPSec_VPN_tutorial.html">IPCop IPSec VPN</a></li> 
+    <li><a href="../ipcopipsec/ipcopipsecvpn.htm">IPCop VPN to XP</a></li>
+  </ul>
+
+  <ul id="menuSubThree" class="menuVert" onMouseOver="setMenu('menuSubThree')" onMouseOut="clearMenu('menuSubThree')">
+    <li><a href="../wakeupsurvey.html">Wake-up alarm</a></li>
+    <li><a href="../Fonality_bell_ring.html">Fonality Bell prank</a></li>
+  </ul>
+
+  <ul id="menuSubFour" class="menuVert" onMouseOver="setMenu('menuSubFour')" onMouseOut="clearMenu('menuSubFour')">
+  <li><a href="http://www.imagescape.com">Ken's company</a></li>
+  <li><a href="http://www.lawnpartysigns.com/">Lawn Party Signs</a></li>
+ </ul>
+  <ul id="menuSubFive" class="menuVert" onMouseOver="setMenu('menuSubFive')" onMouseOut="clearMenu('menuSubFive')">
+  <li><a href="../peacocks/">Peacocks</a></li>
+ </ul>
+</div><!--menuTop -->
+<div id="greenbackground">
+<h1>VoIP through a SonicWall TZ170</h1>
+<p>
+The purpose of this document is to show how to set up a Sonicwall firewall to allow VoIP services or remote phones to connect through it.
+The Fonalty PBXtra or trixbox CE server use the SIP service which is on UDP port 5060 and also the RTP service for the audio portion of the call on a random port in the range of UDP 10,000 to UDP 20,000.
+This page will document how to forward these ports through a Sonicwall TZ170 running SonicOS Standard 3.1.2.6-97s, but most other Sonicwall firewalls have a similar set up.</p>
+<p>If you have multiple static IP addresses from your ISP, then it is also possible to set up a one-to-one NAT between one of your external IP addresses and the Fonality PBXtra or the trixbox CE system.
+Then you can either add a firewall rule that forwards all traffic from the external IP address to the PBXtra or add rules specifying exactly which ports to forward. Since I do not have a second static IP address, these screen shots will not cover that set up.
+This set up will work with both VoIP services and remote phones.
+If you want the HUD3 client to work remotely, then you will also have to add the HUD3 service on TCP port 5222 and use the "Rule Wizard" to forward that service to the the IP address of the PBXtra or trixbox Pro server.
+</p>
+<p>First login to your Sonicwall firewall and click on the "Firewall" tab and then the "Services" page.</p>
+<div class="picture"> <img src="servicesb4.jpg" alt="Services before"/></div>
+<p>Click on the "Add" button below "Custom Services"</p> 
+<div class="picture"><img src="addservice.jpg" alt="add service"/></div><p>Click "OK" to add the FonalityRTP service</p>
+<div class="picture"><img src="servicesAfter.jpg" alt="services after" /></div><p>Services showing custom addition</p>
+<p>Then click on the "Firewall" button again and then click on "Rule Wizard".</p>
+<div class="picture"><img src="RuleWizard1.jpg" alt="rule wizard"/></div><p>Just click "Next"</p>
+<div class="picture"><img src="RuleWizard2.jpg" alt="rule wizard" /></div><p>Click the radio button "Public Server" and then click "Next"</p>
+<div class="picture"><img src="RuleWizard3.jpg" alt="rule wizard" /></div><p>Select "SIP" from the service drop down menu and put in the IP address that you assigned to your PBXtra or trixbox server and click "Next"</p>
+<div class="picture"><img src="RuleWizard4.jpg" alt="rule wizard" /></div><p>Click "Apply"</p>
+<p>Now we need to add the RTP rule too. Click on the "Rule Wizard" again.</p>
+<div class="picture"><img src="RuleWizard1.jpg" alt="rule wizard"/></div><p>Just Click "Next"</p>
+<div class="picture"><img src="RuleWizard22.jpg" alt="rule wizard"/></div><p>Click on the radio button "Public Server" and then click "Next"</p>
+<div class="picture"><img src="RuleWizard23.jpg" alt="rule wizard" /></div><p>Select "FonalityRTP" from the "Service" drop down menu, put in the IP address of your PBXtra or trixbox server and click "Next"</p>
+<div class="picture"><img src="RuleWizard4.jpg" alt="rule wizard" /></div><p>Click "Apply"</p>
+<div class="picture"><img src="FirewallAfter.jpg" alt="firewall after" /></div><p>Firewall rules after the additions</p>
+<p>Then we need to change several options under the "Firewall" Voip page.</p>
+<div class="picture"><img src="FirewallVoIP.jpg" alt="firewall VoIP" /></div><p>Click "Apply" after setting the Firewall VoIP settings.</p>
+<h2>I have tested these settings on my home trixbox CE system, so I know that they work.</h2>
+<h2>Some of the additional Security Services, like the Gateway anti-virus, anti-spyware or Content filtering, can cause dropped calls so they must be disabled.</h2>
+</div>
+<h5>Copyright &#169; 2009 by Mike Beirne</h5>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="../script.js"></script>
+</body>
+</html>
