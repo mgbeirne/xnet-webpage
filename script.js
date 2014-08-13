@@ -95,6 +95,14 @@ $('.revealer').click(function(){
 //  fontSize: '20px'
 //}, 2000);
 
+/*
+$('.menuVert li').hover(function() {
+  $(this).animate({paddingLeft: '+=15px'}, 200);
+}, function() {
+  $(this).animate({paddingLeft: '-=15px'}, 200);
+});
+*/
+
 
 $(window).scroll(function () {
   $('#navigation').css('top', $(document).scrollTop());
@@ -118,5 +126,45 @@ function rotatePics(currentPhoto) {
     $(this).show();
     setTimeout(function() {rotatePics(++currentPhoto);}, 4000);
   });                   
-}                               
+}
+function addClass(element, classToAdd) {
+    var currentClassValue = element.className;
+      
+    if (currentClassValue.indexOf(classToAdd) == -1) {
+        if ((currentClassValue == null) || (currentClassValue === "")) {
+            element.className = classToAdd;
+        } else {
+            element.className += " " + classToAdd;
+        }
+    }
+}
+ 
+function removeClass(element, classToRemove) {
+    var currentClassValue = element.className;
+ 
+    if (currentClassValue == classToRemove) {
+        element.className = "";
+        return;
+    }
+ 
+    var classValues = currentClassValue.split(" ");
+    var filteredList = [];
+ 
+    for (var i = 0 ; i < classValues.length; i++) {
+        if (classToRemove != classValues[i]) {
+            filteredList.push(classValues[i]);
+        }
+    }
+ 
+    element.className = filteredList.join(" ");
+}
 
+
+var now = new Date();
+day = now.getDate();
+month = now.getMonth() + 1;
+
+if (month == 10 && day >= 11 ) {
+var halloweenSel = document.querySelector("#regular");
+addClass(halloweenSel, "halloween");
+}

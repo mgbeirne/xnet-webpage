@@ -1,0 +1,404 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />	
+<title>LAComputerHelp IPCop IPSec VPN tutorial</title>
+<meta name="description" content="A tutorial on how to set up IPCop IPSec VPN connections. Both net-to-net and host-to-net configurations are covered."/>
+    <meta name="keywords" content="IPSec x509 certificates IPCop VPN openssl"/>
+<meta name="title" content="LAComputerHelp IPCop IPSec VPN tutorial"/>
+<meta http-equiv='Content-Type' content='text/html;charset=utf-8' />
+<meta http-equiv='Content-Location' content='/IPCop_IPSec_VPN_tutorial.html' />
+<link href="../style.css" rel="stylesheet" type="text/css"/>
+<link href='http://fonts.googleapis.com/css?family=Nosifer' rel='stylesheet' type='text.css' />
+	<script type='text/javascript'>
+	//	MM_preloadImages('images/33160995.png');
+	//	MM_preloadImages('images/33162517.png');
+	//	MM_preloadImages('images/35350097.png');
+	//	MM_preloadImages('images/conntype.png');
+	//	MM_preloadImages('images/35350098.png');
+	//	MM_preloadImages('images/35350099.png');
+
+	</script>
+
+    <link rel='stylesheet' type='text/css' id='layout1.css' href='layout1.css?1066215398' />
+    <link rel='stylesheet' type='text/css' id='theme.css' href='theme.css?1066215398' />
+    <link rel='stylesheet' type='text/css' id='color_3.css' href='color_3.css?1066215398' />
+    <link rel='stylesheet' type='text/css' id='custom.css' href='custom.css?1066215398' />
+    
+</head>
+
+<body id='regular' >
+
+
+<div class="sf_outer_wrapper">
+	
+	<!-- 1 --><div class="sf_extra1"><span></span></div>
+	
+	<div class="sf_wrapper"><div style='display:block;overflow:visible;margin:0;padding:0;'><div class='sf_undocked' style='display:block;height:0;position:absolute;margin:0;padding:0;overflow:visible;width:0;top:0;z-index:999998;left:auto;'>
+</div></div>
+
+
+		<!-- 10 --><div class="sf_extra10"><span></span></div>
+
+		<div class="sf_header_wrapper">
+
+			<!-- 2 --><div class="sf_extra2"><span></span></div>
+
+
+			<!-- 3 --><div class="sf_extra3"><span></span></div>
+
+		</div><!-- /sf_header_wrapper -->
+
+		<!-- 4 --><div class="sf_extra4"><span></span></div>
+
+
+		<!-- 5 --><div class="sf_extra5"><span></span></div>
+
+
+		<!-- 6 --><div class="sf_extra6"><span></span></div>
+
+		<div class="sf_subnavigation">
+            <!-- Nav:Begin -->
+            
+<div id="header">
+<h1>Mike Beirne and LAComputerHelp.com</h1>
+</div>
+<div id="menuTop"> <ul id="menuOne" class="menuHoriz">
+  <li><a href="" onMouseOver="setMenu('menuSubOne')" onMouseOut="clearMenu('menuSubOne')">Home</a></li>
+  <li><a href="" onMouseOver="setMenu('menuSubTwo')" onMouseOut="clearMenu('menuSubTwo')">Tutorials</a></li>
+  <li><a href="" onMouseOver="setMenu('menuSubThree')" onMouseOut="clearMenu('menuSubThree')">Stories</a></li>
+  <li><a href="" onMouseOver="setMenu('menuSubFour')" onMouseOut="clearMenu('menuSubFour')">Links</a></li>
+  <li><a href="" onMouseOver="setMenu('menuSubFive')" onMouseOut="clearMenu('menuSubFive')">Pictures</a></li>
+  </ul>
+
+  <ul id="menuSubOne" class="menuVert" onMouseOver="setMenu('menuSubOne')" onMouseOut="clearMenu('menuSubOne')">
+    <li><a href="../index.html">Mike Beirne</a></li>
+  </ul>
+
+  <ul id="menuSubTwo" class="menuVert" onMouseOver="setMenu('menuSubTwo')" onMouseOut="clearMenu('menuSubTwo')">
+    <li><a href="../trixbox/index.html">VoIP and TZ170</a></li>
+    <li><a href="../IpcopIpsecTutorial/IPCop_IPSec_VPN_tutorial.html">IPCop IPSec VPN</a></li> 
+    <li><a href="../ipcopipsec/ipcopipsecvpn.htm">IPCop VPN to XP</a></li>
+  </ul>
+
+  <ul id="menuSubThree" class="menuVert" onMouseOver="setMenu('menuSubThree')" onMouseOut="clearMenu('menuSubThree')">
+    <li><a href="../wakeupsurvey.html">Wake-up alarm</a></li>
+    <li><a href="../Fonality_bell_ring.html">Fonality Bell prank</a></li>
+  </ul>
+
+  <ul id="menuSubFour" class="menuVert" onMouseOver="setMenu('menuSubFour')" onMouseOut="clearMenu('menuSubFour')">
+  <li><a href="http://www.imagescape.com">Ken's company</a></li>
+  <li><a href="http://www.lawnpartysigns.com/">Lawn Party Signs</a></li>
+ </ul>
+  <ul id="menuSubFive" class="menuVert" onMouseOver="setMenu('menuSubFive')" onMouseOut="clearMenu('menuSubFive')">
+  <li><a href="../peacocks/">Peacocks</a></li>
+ </ul>
+</div><!--menuTop -->
+            <!-- Nav:End -->
+        </div><!-- /sf_subnavigation -->
+
+	<div class="sf_pagetitle">
+		<!-- PageTitle:Begin -->
+		<div class="aftermenu"><h1>IPCop IPSec VPN tutorial</h1></div>
+		<!-- PageTitle:End -->
+	</div>
+		<div class="sf_content">
+			<!-- Content:Begin -->
+			<div style="display:block;zoom:1" ><div id="content1"><div style="display:block;" ><div style="display:block;" ><br />
+<ol id="subMenu0">
+    <li><a href="IPCop_IPSec_VPN_tutorial.html#Introduction">Introduction </a></li>
+    <li><a href="IPCop_IPSec_VPN_tutorial.html#IPCop_Openswan_configuration">IPCop configuration</a></li>
+    <li><a href="IPCop_IPSec_VPN_tutorial.html#IPCop_to_IPCop">IPCop to IPCop or net-to-net</a> </li>
+    <li><a href="IPCop_IPSec_VPN_tutorial.html#Laptop_strongSwan_configuration">Laptop with Ubuntu/strongSwan configuration</a></li>
+    <li><a href="IPCop_IPSec_VPN_tutorial.html#Laptop_Openswan_configuration">Laptop with Ubuntu/Openswan configuration</a> </li>
+</ol>
+<a name="Introduction"></a>
+<h1>Introduction</h1>
+<p>This tutorial is to go over how to set up VPN links from an IPCop firewall using Openswan and certificates. I really started studying how to set up IPSec VPN tunnels several years ago and found some problems. The reason that I decided to write this tutorial is that too many other tutorials use pre-shared keys(PSK) and IPSec aggressive mode. Using that combination is just insecure. Some cable providers will let you see all of the traffic of your neighbors or someone could compromise a server at your ISP and run a packet sniffer capturing your traffic and then run ikecrack.pl on it. They would then have your pre-shared key and be able to impersonate you when your connection goes down. So this tutorial will go through a more secure way of setting up connections using certificates and IPSec "Main" mode.</p>
+<p>This tutorial was tested using IPCop 2.0.0 and strongSwan U4.3.2/K2.6.32-35-generic on Ubuntu 10.0.4.
+</p>
+<p>Don't use IPCop 2.0.1 as there is an issue with the update to the ssl libraries and the creation of the host certificates.</p>
+<p>I have an AT&amp;T DSL line with the DSL modem set in "DMZPlus" mode with my IPCop box red or WAN interface getting an external IP address via DHCP. This is important for net-to-net connections as both sides must have a DNS resolvable name and not be behind another firewall using NAT.</p>
+<p>
+Set up a dynamic DNS service like 
+<a href="http://www.dyndns.org" target="_blank">dyndns.org</a> or <a href="http://www.freedns.afraid.org" target="_blank">freedns.afraid.org</a> or get a static IP address from your Internet Service Provider and buy a domain and have a host name point to it. This way the remote computer can find your IPCop server to initiate the VPN connection.</p>
+<a name="IPCop_Openswan_configuration"></a><h3>IPCop Configuration</h3>
+<p>To configure an IPSec tunnel on IPCop, log in to the web interface and click on VPNs&gt;CA. Then click on "generate root/host certificates" You should see the following screen:</p>
+<div class="picture"><img alt="" width="798" height="509"  src="images/33160995.png"  /></div>
+<p>
+Notice that the "Subject Alt Name" field is filled in with "email:beirne@limerick.chicago.il.us", which is the same as the E-mail address field. This will be used as the local and remote IDs for the VPNs to use. I tried using the longer DER_ASN1_DN, which is actually the "subject" field of each certificate, but IPCop wouldn't let me specify them and the other remote IDs of IP address and Fully Qualified Domain Name would not work with NAT-traversal. After you have filled in the fields and clicked "Generate Root/Host Certificates" you should get the following page:
+</p>
+<div class="picture"><img alt="" width="798" height="370"  src="images/33162517.png"  /></div>
+<p>
+Now you can download these certificates to a USB flash drive or to your computer by clicking on the floppy icons above. Rename the files to something related to the IPCop host that they came from so as not to confuse them with the cacert.pem or hostcert.pem from a different IPCop server. I used crabdance2cacert.pem and crabdance2hostcert.pem.
+</p>
+<p>Now click on VPNs-&gt;IPsec and you should see something similar to the following screen. Yours should have a red banner saying "STOPPED" instead of "RUNNING" and all "PLUTO DEBUG" options should be turned off. The Pluto Debug options are only necessary to increase the verbosity of the log files generated in order to resolve problems and should be turned off after all connections are working. They will fill up a filesystem if left on for a few days too. </p>
+<div class="picture"><img alt="" width="798" height="500"  src="images/35350097.png"  /></div>
+<p>Since I have a DHCP assigned address, my IP address may change, but %defaultroute will always use the Internet connection default route.
+Check the box for "IPsec on RED" and click "Save" and then "Add".
+Then you should see the following screen: </p>
+<div class="picture"><img alt="" width="798" height="269"  src="images/conntype.png"  /></div>
+<p>Choose Host-to-Net for road warrior connections or Net-to-Net for connections with another IPCop box. Then click on "Add". You should then see the following screen except with blank fields.
+</p>
+<div class="picture"><img alt="" width="798" height="866"  src="images/35350098.png"  /></div>
+<p>Give the connection a name. Use the email address that you put into the Root/Host certificate subjectAltName field for the "Local ID" field. And use the email address of the person getting the road warrior connection for the "Remote ID", "User's E-mail Address" and also put it after "email:" in the subjectAltName field. Leave the "Remote Host/IP:" field empty. You will have to give the PKCS12 file password to the person getting the connection too. You should not have to change any of the "Advanced" settings.
+</p>
+<p>
+After you click "Save", you should see the following screen:
+</p>
+<div class="picture"><img alt="" width="798" height="564"  src="images/35350099.png"  /></div>
+<p>
+IPCop is now waiting for the road warrior to initiate the connection from the remote end.
+</p>
+<a name="IPCop_to_IPCop"></a><h3>IPCop to IPCop net-to-net</h3>
+<p>
+The net-to-net for an IPCop to IPCop
+connection is easy. You would choose "Upload a
+certificate" radio button instead of "Generate a certificate" and browse to your USB drive or computer for
+the host certificate of the remote computer. Use the email address you
+put into the "subjectAltName" field on each side for the Local/Remote ID
+field. and then click "Save". Yes, you need to create Root CA and host
+certificates on both boxes before you can add the connection. Then go
+back to the VPNs-&gt;CA and upload the Root CA certificate from the
+remote host too. At that point, you would go back to the VPNs-&gt;IPsec
+and if both sides have the connection enabled, it should come up.
+</p>
+<a name="Laptop_strongSwan_configuration"></a><h3>Laptop with Ubuntu/strongSwan</h3>
+<p>
+I will now go over the steps to configure strongSwan on Ubuntu to connect.
+</p>
+<p>
+Install strongSwan by using either "sudo apt-get install strongswan" or clicking on the synaptic package manager, searching for VPN, selecting strongswan, clicking "okay" for the dependencies and clicking accept to have it do it. You will also need openssl to extract the keys and that can be done with "sudo apt-get install openssl".
+</p>
+<p>
+Copy the IPCop Certificate Authority certificate file from the USB drive to the location that both Openswan and strongSwan read them from.</p>
+# cp crabdance2cacert.pem /etc/ipsec.d/cacerts<br />
+<br />
+Copy the IPCop host certificate to certs folder.<br />
+<br />
+# cp crabdance2hostcert.pem /etc/ipsec.d/certs
+<p>
+IPCop gives you a PKCS12 file, but strongSwan wants separate .pem certificates The following commands will extract the client secret key and the client certificate from the PKCS12 file. The PKCS12 file also contains the IPCop CA certificate, but we downloaded it from the IPCop VPNs-&gt;CA page to the USB drive at the same time that we downloaded the IPCop host certificate, which is not in the pkcs12 file. The following commands will ask for the PKCS12 password you gave above each time you use the PKCS12 file.</p>
+# openssl pkcs12 -in test21.p12 -out test21key.pem -nocerts
+<p>
+The following command copies the secret key to the ipsec private folder
+</p>
+# cp test21key.pem /etc/ipsec.d/private
+<p>
+Now extract the client certificate and copy it to the certs folder.
+</p>
+# openssl pkcs12 -in test21.p12 -out test21cert.pem -clcerts -nokeys<br />
+# cp test21cert.pem /etc/ipsec.d/certs<br />
+<p>
+Now edit the /etc/ipsec.conf file paying attention to the following.
+Blank lines are important in this file to separate the sections, so do not delete them. Conventions are "left" is local to the machine you are on and right is the remote host. Each line of a section begins with either a tab or space characters. Even comments within a section must begin with white space or the section won't get parsed correctly. Since I only have one VPN on the the laptop, I didn't worry about the IKEv2 daemon charon. The lines with dashes "-" are only to show the beginning and end of the file and are not part of the file.</p>
+-------------------------ipsec.conf-------------------<br />
+# ipsec.conf - strongSwan IPsec configuration file<br />
+<br />
+# basic configuration<br />
+<br />
+config setup<br />
+&nbsp;&nbsp; &nbsp;plutodebug=all<br />
+&nbsp;&nbsp; &nbsp;# crlcheckinterval=600<br />
+&nbsp;&nbsp; &nbsp;# strictcrlpolicy=yes<br />
+&nbsp;&nbsp; &nbsp;# cachecrls=yes<br />
+&nbsp;&nbsp; &nbsp;nat_traversal=yes<br />
+&nbsp;&nbsp; &nbsp;charonstart=no<br />
+&nbsp;&nbsp; &nbsp;plutostart=yes<br />
+<br />
+conn %default<br />
+&nbsp;&nbsp; &nbsp;ikelifetime=60m<br />
+&nbsp;&nbsp; &nbsp;keylife=20m<br />
+&nbsp;&nbsp; &nbsp;rekeymargin=3m<br />
+&nbsp;&nbsp; &nbsp;keyingtries=1<br />
+&nbsp;&nbsp; &nbsp;keyexchange=ikev1<br />
+<br />
+# Add connections here.<br />
+# Give the connection a name.<br />
+<br />
+conn test21<br />
+&nbsp;&nbsp;&nbsp; # Use whatever IP address our Internet provider has given us.<br />
+&nbsp;&nbsp; &nbsp;left=%defaultroute<br />
+&nbsp;&nbsp; &nbsp;# The location of our client certificate<br />
+&nbsp;&nbsp; &nbsp;leftcert=/etc/ipsec.d/certs/test21cert.pem<br />
+&nbsp;&nbsp; &nbsp;# Our local ID as defined in the certificate and on the configuration<br />
+&nbsp;&nbsp; &nbsp;# page of IPCop<br />
+&nbsp;&nbsp; &nbsp;leftid=beirne@vpnet.chi.il.us<br />
+&nbsp;&nbsp; &nbsp;# The Fully Qualified Domain Name(FQDN) or IP address of the remote<br />
+&nbsp;&nbsp; &nbsp;# host. I use the freedns.afraid.org dynamic dns service.<br />
+&nbsp;&nbsp; &nbsp;# The dyndns.org was free, but now seems to be a paid service.<br />
+&nbsp;&nbsp; &nbsp;right=mgbeirne.crabdance.com<br />
+&nbsp;&nbsp; &nbsp;# The remote subnet we need to get to<br />
+&nbsp;&nbsp; &nbsp;rightsubnet=192.168.69.0/24<br />
+&nbsp;&nbsp; &nbsp;# The remote ID as defined on IPCop<br />
+&nbsp;&nbsp; &nbsp;rightid=beirne@limerick.chicago.il.us<br />
+&nbsp;&nbsp; &nbsp;# The host certificate of your IPCop box.<br />
+&nbsp;&nbsp; &nbsp;rightcert=/etc/ipsec.d/certs/crabdance2hostcert.pem<br />
+&nbsp;&nbsp; &nbsp;# add the connection, but don't automatically start it.<br />
+&nbsp;&nbsp; &nbsp;auto=add<br />
+<br />
+------------------------------------------------------------------------
+<p>
+Now edit the /etc/ipsec.secrets file so that pluto can load the secret key to unlock the client certificate. There are really three ways to do this, one is to prompt the user each time the tunnel is brought up, two is to put the password in the file within double quotes in place of the "%prompt" and the third is to specify "-nodes" when you extracted the key from the PKCS12 file above.</p>
+----------------------------------/etc/ipsec.secrets-------------------<br />
+# This file holds shared secrets or RSA private keys for inter-Pluto<br />
+# authentication.&nbsp; See ipsec_pluto(8) manpage, and HTML documentation.<br />
+<br />
+# RSA private key for this host, authenticating it to any other host<br />
+# which knows the public part.&nbsp; Suitable public keys, for ipsec.conf, DNS,<br />
+# or configuration of other implementations, can be extracted conveniently<br />
+# with "ipsec showhostkey".<br />
+<br />
+#Remote-ID Local-ID a-colon-separated-by-spaces KeyType location-of-key Password<br />
+beirne@limerick.chicago.il.us beirne@vpnet.chi.il.us : RSA /etc/ipsec.d/private/test21key.pem %prompt<br />
+<br />
+-----------------------------------------------------------------------
+<p>
+The following commands need to be run as root every time you want to
+bring up the VPN. Stop and start the ipsec daemons</p>
+# ipsec stop<br />
+# ipsec start<br />
+<br />
+Reload the configuration files<br />
+<br />
+# ipsec reload<br />
+<p>
+The following command will allow you to enter the password for the client key and may not be necessary if you put the password in the file or extracted the key with the "-nodes" option.
+</p>
+# ipsec rereadsecrets
+<p>
+After the key is correctly loaded, then the client certificate can be unlocked and used in the connection. Then bring up the connection.</p>
+# ipsec up test21<br />
+<p>
+Test the connection by connecting to one of the hosts on the remote network.
+</p>
+ssh -l beirne 192.168.69.12<br />
+<p>
+When you are all done, then you can stop the VPN with the following command.
+</p>
+# ipsec stop<br />
+<a name="Laptop_Openswan_configuration"></a><h3>Laptop with Ubuntu/Openswan
+</h3>
+<p>The software platform for Openswan is Ubuntu 10.04/Openswan U2.6.37.
+</p>
+<p>
+The same steps for extracting the certificates and keys from the PKCS12 file and copying the host and CA certs to /etc/ipsec.d are done for Openswan as were done for strongSwan above.
+</p>
+# cp crabdance2cacert.pem /etc/ipsec.d/cacerts<br />
+<br />
+Copy the IPCop host certificate to certs folder.<br />
+<br />
+# cp crabdance2hostcert.pem /etc/ipsec.d/certs<br />
+Extract the secret key.<br />
+<br />
+# openssl pkcs12 -in test23.p12 -out test23key.pem -nocerts<br />
+<br />
+The following command copies the secret key to the ipsec private folder<br />
+<br />
+# cp test23key.pem /etc/ipsec.d/private<br />
+<br />
+Now extract the client certificate and copy it to the certs folder.<br />
+<br />
+# openssl pkcs12 -in test23.p12 -out m700test23cert.pem -clcerts -nokeys<br />
+# cp m700test23cert.pem /etc/ipsec.d/certs<br />
+The following ipsec.conf came from copying the ipcop /etc/ipsec.conf file and modifying it for the correct directories and to make changes for the remote to work.<br />
+-------------------------------------ipsec.conf---------------------<br />
+#<br />
+<br />
+version 2.0<br />
+<br />
+config setup<br />
+&nbsp;&nbsp; &nbsp;protostack=netkey<br />
+&nbsp;&nbsp; &nbsp;klipsdebug="none"<br />
+&nbsp;&nbsp; &nbsp;plutodebug="parsing control dns natt "<br />
+&nbsp;&nbsp; &nbsp;#plutoload=%search<br />
+&nbsp;&nbsp; &nbsp;#plutostart=%search<br />
+&nbsp;&nbsp; &nbsp;uniqueids=yes<br />
+&nbsp;&nbsp; &nbsp;nat_traversal=no<br />
+&nbsp;&nbsp; &nbsp;virtual_private=%v4:10.0.0.0/8,%v4:172.16.0.0/12,%v4:192.168.0.0/16,%v4:!192.168.69.0/255.255.255.0,%v4:!192.168.63.0/255.255.255.0,%v4:!192.168.64.0/255.255.255.0,%v4:!192.168.4.0/255.255.255.0,%v4:!192.168.68.0/255.255.255.0<br />
+<br />
+conn %default<br />
+&nbsp;&nbsp; &nbsp;keyingtries=0<br />
+&nbsp;&nbsp; &nbsp;disablearrivalcheck=no<br />
+<br />
+#RED<br />
+conn test23<br />
+&nbsp;&nbsp;&nbsp; # IPCop has right=%any <br />
+&nbsp;&nbsp; &nbsp;left=%defaultroute<br />
+&nbsp;&nbsp;&nbsp; # IPCop has %defaultroute instead<br />
+&nbsp;&nbsp; &nbsp;right=mgbeirne.crabdance.com<br />
+&nbsp;&nbsp;&nbsp; # IPCop has rightsubnet=vhost:%no,%priv<br />
+&nbsp;&nbsp; &nbsp;rightsubnet=192.168.69.0/255.255.255.0<br />
+&nbsp;&nbsp; &nbsp;rightcert=/etc/ipsec.d/certs/crabdance2hostcert.pem<br />
+&nbsp;&nbsp; &nbsp;leftcert=/etc/ipsec.d/certs/m700test23cert.pem<br />
+&nbsp;&nbsp;&nbsp; # The rest of the file is the same on IPCop and laptop.<br />
+&nbsp;&nbsp; &nbsp;rightid="beirne@limerick.chicago.il.us"<br />
+&nbsp;&nbsp; &nbsp;leftid="beirnemg@vpnet.chi.il.us"<br />
+&nbsp;&nbsp; &nbsp;ike=aes128-sha-modp1536,aes128-sha-modp1024,aes128-md5-modp1536,aes128-md5-modp1024,3des-sha-modp1536,3des-sha-modp1024,3des-md5-modp1536,3des-md5-modp1024<br />
+&nbsp;&nbsp; &nbsp;esp=aes128-sha1,aes128-md5,3des-sha1,3des-md5<br />
+&nbsp;&nbsp; &nbsp;ikelifetime=1h<br />
+&nbsp;&nbsp; &nbsp;keylife=8h<br />
+&nbsp;&nbsp; &nbsp;dpddelay=30<br />
+&nbsp;&nbsp; &nbsp;dpdtimeout=120<br />
+&nbsp;&nbsp; &nbsp;dpdaction=clear<br />
+&nbsp;&nbsp; &nbsp;pfs=yes<br />
+&nbsp;&nbsp; &nbsp;authby=rsasig<br />
+&nbsp;&nbsp; &nbsp;leftrsasigkey=%cert<br />
+&nbsp;&nbsp; &nbsp;rightrsasigkey=%cert<br />
+&nbsp;&nbsp; &nbsp;auto=add<br />
+&nbsp;&nbsp; &nbsp;keyingtries=3<br />
+-------------------------------------end of ipsec.conf-----------------------------<br />
+The ipsec.secrets file is exactly the same as the strongSwan one, except for the file name of the key.<br />
+-------------------------------------ipsec.secrets---------------------------------<br />
+#Remote-ID Local-ID a-colon-separated-by-spaces KeyType location-of-key Password<br />
+beirne@limerick.chicago.il.us beirne@vpnet.chi.il.us : RSA /etc/ipsec.d/private/test23key.pem %prompt<br />
+-------------------------------------end of ipsec.secrets---------------------------
+<p>
+The commands for Openswan are very similar to those for strongSwan. Stop and start pluto.
+</p>
+# ipsec setup stop<br />
+# ipsec setup start<br />
+# ipsec whack --listen<br />
+The above will complain that it could not read the secret key and recommend the following command to prompt you for the password.<br />
+# ipsec auto --rereadsecrets<br />
+# ipsec auto --up test23 &amp;<br />
+<br />
+Then the tunnel should be up. You can check it with the following:<br />
+# ipsec auto status |grep eroute<br />
+<br />
+If you want to get a very verbose dump of everything to do with openswan use the following commands.<br />
+<br />
+# ipsec barf &gt;/tmp/ipsecbarf.out<br />
+# less /tmp/ipsecbarf.out<br />
+Looking through the file should give you a clue as to why the tunnel did not come up. Another useful command is:<br />
+# ipsec auto --status<br />
+<br />
+To shutdown the tunnel use:<br />
+<br />
+# ipsec setup stop<br />
+<br />
+If you have any problems with this, please contact me at mike@lacomputerhelp.com </div></div></div></div>
+			<!-- Content:End -->
+		</div><!-- /sf_content -->
+
+		<!-- 12 --><div class="sf_extra12"><span></span></div>
+		<div class="sf_footer">
+			<!-- Footer:Begin -->
+			<div style="display:block;" >Content copyright <script type='text/javascript'>if (typeof(getCopyrightDate)=='function') document.write(getCopyrightDate(2011, null, '-')); else document.write((new Date()).getFullYear());</script>. LACOMPUTERHELP.COM. All rights reserved.<br />
+</div>			
+			<!-- Footer:Begin -->
+		</div><!-- /sf_footer -->
+
+		<!-- 8 --><div class="sf_extra8"><span></span></div>
+
+	</div><!-- /sf_wrapper -->
+
+	<!-- 9 --><div class="sf_extra9"><span></span></div>
+
+</div><!-- /sf_outer_wrapper -->
+   
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="../script.js"></script>
+</body>
+</html>

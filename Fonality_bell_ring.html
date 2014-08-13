@@ -1,0 +1,176 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Fonality bell ringing prenk</title>
+ <meta http-equiv="Content-Type"
+     content="text/html; charset=utf-8" />
+ <link href="style.css" rel="stylesheet" type="text/css" />
+ <link href='http://fonts.googleapis.com/css?family=Nosifer' rel='stylesheet' type='text.css' />
+</head>
+<body id="regular">
+<div id="header">
+<h1>Mike Beirne and LAComputerHelp.com</h1>
+</div>
+<div id="menuTop"> <ul id="menuOne" class="menuHoriz">
+  <li><a href="" onMouseOver="setMenu('menuSubOne')" onMouseOut="clearMenu('menuSubOne')">Home</a></li>
+  <li><a href="" onMouseOver="setMenu('menuSubTwo')" onMouseOut="clearMenu('menuSubTwo')">Tutorials</a></li>
+  <li><a href="" onMouseOver="setMenu('menuSubThree')" onMouseOut="clearMenu('menuSubThree')">Stories</a></li>
+  <li><a href="" onMouseOver="setMenu('menuSubFour')" onMouseOut="clearMenu('menuSubFour')">Links</a></li>
+  <li><a href="" onMouseOver="setMenu('menuSubFive')" onMouseOut="clearMenu('menuSubFive')">Pictures</a></li>
+  </ul>
+
+  <ul id="menuSubOne" class="menuVert" onMouseOver="setMenu('menuSubOne')" onMouseOut="clearMenu('menuSubOne')">
+    <li><a href="index.html">Mike Beirne</a></li>
+  </ul>
+
+  <ul id="menuSubTwo" class="menuVert" onMouseOver="setMenu('menuSubTwo')" onMouseOut="clearMenu('menuSubTwo')">
+    <li><a href="trixbox/index.html">VoIP and TZ170</a></li>
+    <li><a href="IpcopIpsecTutorial/IPCop_IPSec_VPN_tutorial.html">IPCop IPSec VPN</a></li> 
+    <li><a href="ipcopipsec/ipcopipsecvpn.htm">IPCop VPN to XP</a></li>
+  </ul>
+
+  <ul id="menuSubThree" class="menuVert" onMouseOver="setMenu('menuSubThree')" onMouseOut="clearMenu('menuSubThree')">
+    <li><a href="wakeupsurvey.html">Wake-up alarm</a></li>
+    <li><a href="Fonality_bell_ring.html">Fonality Bell prank</a></li>
+  </ul>
+
+  <ul id="menuSubFour" class="menuVert" onMouseOver="setMenu('menuSubFour')" onMouseOut="clearMenu('menuSubFour')">
+  <li><a href="http://www.imagescape.com">Ken's company</a></li>
+  <li><a href="http://www.lawnpartysigns.com/">Lawn Party Signs</a></li>
+ </ul>
+  <ul id="menuSubFive" class="menuVert" onMouseOver="setMenu('menuSubFive')" onMouseOut="clearMenu('menuSubFive')">
+  <li><a href="peacocks/">Peacocks</a></li>
+ </ul>
+</div><!--menuTop -->
+<div id="greenbackground">
+<div id="aftermenu">
+<h1>Fonality Bell Prank</h1>
+</div>
+<p>
+It started with the bell. I noticed that there was an unused Western Electric
+remote telephone bell in my boss's office, just to the right of the door and
+about two inches from the ceiling. I decided that I wanted to make it possible
+for anyone in the company to make that bell ring by clicking a button on a
+web page.</p>
+<p>
+I got the idea from a prank that one of my fraternity brothers had pulled on
+the CEO of a company that he used to work for. The CEO had a habit of walking
+around his office when he was thinking. He went on vacation and my friend put
+a croaking frog in the ceiling with a motion sensor that would cause it to croak
+when he walked. They also had it set up such that they could trigger it from
+the office next door too.</p>
+<p>
+The company I worked for had a Christmas party and everyone was given a raffle
+ticket and I happened to win several eBay gift cards. I won the eBay bid on a
+Grandstream HT-386 dual FXS analog telephone adapter and used the gift cards to
+pay for it. This device has an RJ45 Ethernet jack, two RJ11 jacks for analog
+phones and a power connector. It is designed to obtain an IP address on the
+network and then register as an extension with a SIP server and allow calls to
+and from a dumb analog telephone plugged into one of the FXS ports. It can
+supply enough power to make the remote telephone bell ring.</p>
+<p>
+Asterisk is software that can be installed on Linux and supports most SIP
+devices, including the Grandstream HT-386. I had already installed Linux on my
+laptop, so I installed a few additional packages: asterisk, apache and PHP.
+Then it was a simple matter to modify the asterisk configuration files to allow
+the HT-386 to register as extension 101 for one jack and 102 for the other with
+a maximum ring time of 5 seconds, which is the length of time of one telephone
+ring.</p>
+<p>
+Now the problem was how to cause asterisk to dial the extension from a web
+page. One of the tools that a company engineer had written would cause a remote
+customer system to dial an external number and connect the call to an extension
+on their system when run from the admin server on the company network. So I
+knew that there had to be a way to dial an extension too. After viewing the
+source of the command that the engineer had written, I found out that what it
+did was create a specially formatted file and copy it to
+/var/spool/asterisk/outgoing on the remote system. I then created a file that
+would cause extension 102 to call extension 101 with the 5 second timeout.
+Then it was just a matter of writing an html/PHP file that would display a web
+page and when the button image on the page was pressed, copy that file to the
+/var/spool/asterisk/outgoing directory on my laptop.</p>
+<p>
+The next thing to be done was to run a wire from the bell in the office at work
+to somewhere that I could plug the HT-386 into power and the network. The
+company had added four cubes during an expansion and had hired electricians to
+run network cables from these cubes to the network closet. They had cut holes
+in the wall to run the cables down near the floor and another at the top of
+the wall into the drop ceiling and the upper hole just happened to be less than
+a foot from the bell. Only three of these cubes were in use, so there were
+unused network and power jacks in the fourth cube. I brought in a spool of
+telephone wire and one day stayed late until everyone else had gone home and
+ran the wire up through the same hole that the network cables came out of near
+the floor and through one of the mounting holes for the bell, connected it and
+attached an RJ11 jack to the other end. Several days later, I brought the HT-386
+into the office, hid it behind a box in Andy's cube and connected it to power,
+the network and the bell.  I also connected a black RJ11 patch cable to the
+connector on the side of the bell, lifted up one of the ceiling tiles and threw
+the other end as far as I could. Then I powered on my laptop and made sure that
+pushing the button on the web page would make the bell ring.</p>
+<p>
+The only thing left to do was to let everyone in the office except my boss,
+Mike J, and his office mate, Dave, know about the web page. I just figured that
+I would ask the engineering team if they had a mailing list tomorrow and send
+out an email to the list during lunchtime.</p>
+<p>
+So the next day, I completed my first appointment for the day and went to talk
+to the engineering team. I first talked to Carlo, but he told me to talk to
+Greg, the manager of the engineering team, who insisted on me telling him what
+I wanted the list for and as soon as I told him the web server IP address, he
+pushed the button ten times. Then he asked what had happened. I told him that it
+had made the bell ring. Since I had set it up to ring for 5 seconds, 10 pushes
+of the button meant that the bell had rung constantly for 50 seconds. Ben and
+Carlo, who worked for Greg went to Dave and Mike's office while Greg pushed
+the button a few more times to verify that the bell was ringing. Then everyone
+on the engineering team went to the web page and began pushing the button.</p>
+<p>
+After an hour or so of the bell ringing pretty much constantly, Mike said that
+he was going to make sure that whoever had done this was going to be fired and
+that he thought it was Carlo, because "he knows how to solder." The Human
+Resources Manager then came around and was asking who did it, but nobody
+confessed and Carlo just laughed and said "No, it wasn't me" when he asked him.</p>
+<p>
+After a while Ben came back to the engineering office and said that it was over
+because Dave had unplugged the wire from the bell. I asked him which wire, and
+he said the black one. I said that the black one was just a fake, a dummy one
+that I had put in to throw them off. Ben's mouth dropped and everyone laughed
+and continued pushing the button on the web page and ringing the bell.</p>
+<p>
+At one point the CEO, Chris came by to ask Mike something and Mike complained
+about the bell to him and Chris just walked away in disgust.</p>
+<p>
+Dave then tried removing the metal bells, but while this made it much quieter
+in the office, it didn't stop the bell from going "bzzzt" every time someone
+pushed the button.</p>
+<p>
+After a while, Dave decided that even that was too much and got on his chair
+holding a butter knife to cut the wires. We warned him that there was up to 90
+volts on the wires and after looking at the butter knife, he decided to do it
+anyway. He managed to break at least one of the wires and finally the bell
+became silent.</p>
+<p>
+I went and asked Andy if I could get something next to the box under his desk
+and removed the HT-386. I then shut down my laptop and put it and the HT-386
+away in the laptop bag.</p>
+<p>
+In retrospect, I should have limited the bell to ringing only once every five
+minutes instead of allowing it to ring constantly. This would have required
+modifying the PHP script to create a time file and only allowing the
+bell-ringing file to be copied if the time stamp on the time file was over five
+minutes old and then touching the time file to update the time stamp. I also
+should have created my own email list of everyone in the office to send the
+email to. This may have resulted in me being fired that day, but if the CEO,
+who has pulled his own pranks, had pushed the web page button a few times, he may
+have prevented that.</p>
+<p>
+    <a href="http://validator.w3.org/check?uri=referer"><img
+      src="http://www.w3.org/Icons/valid-xhtml10" alt="Valid XHTML 1.0 Strict" height="31" width="88" /></a>
+</p>
+<h5>Copyright &#169; 2012 by Mike Beirne</h5>
+</div>
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="script.js"></script>
+</body>
+</html>
