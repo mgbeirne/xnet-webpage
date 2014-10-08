@@ -12,7 +12,7 @@
 
 })(jQuery);
 
-
+$('#no-script').remove();
 $(window).scroll(function () {
   $('#navigation').css('top', $(document).scrollTop());
 });
