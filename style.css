@@ -33,11 +33,13 @@ div#menuTop li {
     font-family: "Trebuchet MS", sans-serif;
     background-color: #00a3a3;
     color: white;
-    font-size: 12px;
-    width: 135px;
-    height: 15px;
+    font-size: 16px;
+    width: 175px;
+    height: 30px; 
     margin: 0 3px 0 0;
     padding: 0;
+    text-align: center;
+    border-radius: 3px;
 }
 
 div#menuTop a {
@@ -161,11 +163,11 @@ li, h2, h3, h4, h5, h6 {
 .halloween {
    font-family: 'Nosifer', Verdana, Helvetica, Arial, sans-serif;
    background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#100), to(#555));
-   background-image: -webkit-linear-gradient(top, #100, #555);
-   background-image: -moz-linear-gradient(top, #100, #555);
-   background-image: -ms-linear-gradient(top, #100, #555);
-   background-image: -o-linear-gradient(top, #100, #555);
-   background-image: linear-gradient(top, #100, #555);
+   background-image: -webkit-linear-gradient(bottom, #100, #555);
+   background-image: -moz-linear-gradient(bottom, #100, #555);
+   background-image: -ms-linear-gradient(bottom, #100, #555);
+   background-image: -o-linear-gradient(bottom, #100, #555);
+   background-image: linear-gradient(bottom, #100, #555);
    background-color: #555;
    color: #F51;
 }
@@ -179,6 +181,7 @@ li, h2, h3, h4, h5, h6 {
   color:#f00;
   text-decoration:none;
 }
+.halloween h1 { color: #f10;}
 .halloween div#menuTop a {background-color: #100;
     color: #f51;
 }
@@ -227,32 +230,32 @@ li, h2, h3, h4, h5, h6 {
 	*width: 12em; /* no auto sub width for IE7, see white-space comment below */
 }
 .sf-menu a {
-	border-left: 1px solid #fff;
-	border-top: 1px solid #dFeEFF; /* fallback colour must use full shorthand */
+/*	border-left: 1px solid yellow; */
+/*	border-top: 1px solid yellow; /* fallback colour must use full shorthand */
 	border-top: 1px solid rgba(255,255,255,.5);
 	padding: .75em 1em;
 	text-decoration: none;
 	zoom: 1; /* IE7 */
 }
-.sf-menu a {
-	color: #13a;
-}
+/* .sf-menu a {
+	color: yellow;
+} */
 .sf-menu li {
-	background: #BDD2FF;
+/*	background: yellow; */
 	white-space: nowrap; /* no need for Supersubs plugin */
 	*white-space: normal; /* ...unless you support IE7 (let it wrap) */
 	-webkit-transition: background .2s;
 	transition: background .2s;
 }
-.sf-menu ul li {
-	background: #AABDE6;
-}
-.sf-menu ul ul li {
-	background: #9AAEDB;
-}
+/* .sf-menu ul li {
+	background: yellow;
+} */
+/* .sf-menu ul ul li {
+	background: yellow;
+} */
 .sf-menu li:hover,
 .sf-menu li.sfHover {
-	background: #CFDEFF;
+/* 	background: yellow; */
 	/* only transition out, not in */
 	-webkit-transition: none;
 	transition: none;
@@ -274,25 +277,25 @@ li, h2, h3, h4, h5, h6 {
 	width: 0;
 	/* order of following 3 rules important for fallbacks to work */
 	border: 5px solid transparent;
-	border-top-color: #dFeEFF; /* edit this to suit design (no rgba in IE8) */
-	border-top-color: rgba(255,255,255,.5);
+/* 	border-top-color: yellow; /* edit this to suit design (no rgba in IE8) */
+/*	border-top-color: rgba(255,255,255,.5); */
 }
 .sf-arrows > li > .sf-with-ul:focus:after,
 .sf-arrows > li:hover > .sf-with-ul:after,
 .sf-arrows > .sfHover > .sf-with-ul:after {
-	border-top-color: white; /* IE8 fallback colour */
+/*	border-top-color: yellow; */ /* IE8 fallback colour */
 }
 /* styling for right-facing arrows */
 .sf-arrows ul .sf-with-ul:after {
 	margin-top: -5px;
 	margin-right: -3px;
 	border-color: transparent;
-	border-left-color: #dFeEFF; /* edit this to suit design (no rgba in IE8) */
-	border-left-color: rgba(255,255,255,.5);
+/*	border-left-color: yellow; */ /* edit this to suit design (no rgba in IE8) */
+/* 	border-left-color: rgba(255,255,255,.5); */
 }
 .sf-arrows ul li > .sf-with-ul:focus:after,
 .sf-arrows ul li:hover > .sf-with-ul:after,
 .sf-arrows ul .sfHover > .sf-with-ul:after {
-	border-left-color: white;
+/*	border-left-color: yellow; */
 }
 
