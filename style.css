@@ -17,71 +17,6 @@ body {
 //     border: 4px solid navy;
 }
 
-
-div#menuTop {
-    position: relative;
-}
-
-div#menuTop ul {
-    margin: 0;
-    padding: 0;
-    list-style-type: none;
-}
-
-div#menuTop li {
-    display: block;
-    font-family: "Trebuchet MS", sans-serif;
-    background-color: #00a3a3;
-    color: white;
-    font-size: 16px;
-    width: 175px;
-    height: 30px; 
-    margin: 0 3px 0 0;
-    padding: 0;
-    text-align: center;
-    border-radius: 3px;
-}
-
-div#menuTop a {
-    display: block;
-    margin: 0 3px 0 0;
-    background-color: #00a3a3;
-    padding: 0 0px;
-    text-decoration: none;
-    color: white;
-}
-
-div#menuTop a:hover {
-  background-color: #040;
-  color:#0F0;
-  text-decoration:none;
-}
-
-ul.menuHoriz li {
-  float: left;
-  margin-right: 3px;
-  border: solid 1px #993;
-}
-
-ul.menuVert li {
-   border-top: none;
-   border-bottom: solid 1px #993;
-   border-left: solid 1px #993;
-   border-right: solid 1px #993;
-}
-
-ul.menuVert {
-   position: absolute;
-   display: none;
-   top: 18px;
-}
-
-/*ul#menuSubOne { left: 0 }
-ul#menuSubTwo { left: 140px }
-ul#menuSubThree { left: 280px }
-ul#menuSubFour { left: 420px }
-ul#menuSubFive { left: 560px }
-*/
 h1 {
     font-size: x-large;
     color: white;
@@ -126,6 +61,7 @@ a:hover { color: white;font-weight: bold; background: red;text-decoration:none; 
 
 #bodycontent {
    margin-top: 60px;
+   clear: left;
 }
 
 li, h2, h3, h4, h5, h6 {
@@ -140,7 +76,7 @@ li, h2, h3, h4, h5, h6 {
 
 #greenbackground h1 {
    margin-top: 80px;
-   clear: both
+   clear: both;
 }
 
 .aftermenu h1 {
@@ -190,6 +126,7 @@ li, h2, h3, h4, h5, h6 {
 	margin: 0;
 	padding: 0;
 	list-style: none;
+        font-size: large ;
 }
 .sf-menu li {
 	position: relative;
@@ -230,32 +167,36 @@ li, h2, h3, h4, h5, h6 {
 	*width: 12em; /* no auto sub width for IE7, see white-space comment below */
 }
 .sf-menu a {
-/*	border-left: 1px solid yellow; */
-/*	border-top: 1px solid yellow; /* fallback colour must use full shorthand */
+	border-left: 1px solid yellow; 
+	border-top: 1px solid yellow; /* fallback colour must use full shorthand */
 	border-top: 1px solid rgba(255,255,255,.5);
 	padding: .75em 1em;
 	text-decoration: none;
 	zoom: 1; /* IE7 */
 }
-/* .sf-menu a {
-	color: yellow;
-} */
+.sf-menu a {
+	color: white;
+}
+.sf-menu a:hover {
+    color: greenyellow ;
+    background: #040;
+}
 .sf-menu li {
-/*	background: yellow; */
+	background: #00A3A3 ;
 	white-space: nowrap; /* no need for Supersubs plugin */
 	*white-space: normal; /* ...unless you support IE7 (let it wrap) */
 	-webkit-transition: background .2s;
 	transition: background .2s;
 }
-/* .sf-menu ul li {
-	background: yellow;
-} */
-/* .sf-menu ul ul li {
-	background: yellow;
-} */
+.sf-menu ul li {
+	background: #00A3A3;
+}
+.sf-menu ul ul li {
+	background: #00A3A3;
+}
 .sf-menu li:hover,
 .sf-menu li.sfHover {
-/* 	background: yellow; */
+ 	background: #040;
 	/* only transition out, not in */
 	-webkit-transition: none;
 	transition: none;
@@ -277,25 +218,25 @@ li, h2, h3, h4, h5, h6 {
 	width: 0;
 	/* order of following 3 rules important for fallbacks to work */
 	border: 5px solid transparent;
-/* 	border-top-color: yellow; /* edit this to suit design (no rgba in IE8) */
-/*	border-top-color: rgba(255,255,255,.5); */
+ 	border-top-color: yellow; /* edit this to suit design (no rgba in IE8) */
+	border-top-color: rgba(255,255,255,.5); 
 }
 .sf-arrows > li > .sf-with-ul:focus:after,
 .sf-arrows > li:hover > .sf-with-ul:after,
 .sf-arrows > .sfHover > .sf-with-ul:after {
-/*	border-top-color: yellow; */ /* IE8 fallback colour */
+	border-top-color: yellow;  /* IE8 fallback colour */
 }
 /* styling for right-facing arrows */
 .sf-arrows ul .sf-with-ul:after {
 	margin-top: -5px;
 	margin-right: -3px;
 	border-color: transparent;
-/*	border-left-color: yellow; */ /* edit this to suit design (no rgba in IE8) */
-/* 	border-left-color: rgba(255,255,255,.5); */
+	border-left-color: yellow;  /* edit this to suit design (no rgba in IE8) */
+ 	border-left-color: rgba(255,255,255,.5); 
 }
 .sf-arrows ul li > .sf-with-ul:focus:after,
 .sf-arrows ul li:hover > .sf-with-ul:after,
 .sf-arrows ul .sfHover > .sf-with-ul:after {
-/*	border-left-color: yellow; */
+	border-left-color: yellow; 
 }
 
