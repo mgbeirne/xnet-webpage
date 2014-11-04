@@ -79,9 +79,10 @@ li, h2, h3, h4, h5, h6 {
    clear: both;
 }
 
-.aftermenu h1 {
+#aftermenu h1 {
    margin-top: 80px;
    margin-bottom: 0;
+   clear: both;
 }
 
 #subMenu0 {
